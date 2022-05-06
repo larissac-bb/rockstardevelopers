@@ -33,7 +33,7 @@ export default function MainPage() {
           >
             {products?.map((product, index) => (
               <Grid item xs={2} sm={4} md={4} key={index}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, height: "100%" }}>
                   <CardMedia
                     component="img"
                     image={product?.image}
