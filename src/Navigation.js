@@ -9,7 +9,7 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 export default function Navigation() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: "#e6e6e6" }}>
+      <AppBar sx={{ bgcolor: "#e6e6e6" }}>
         <Toolbar>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             <span style={{ color: "black" }}>Shopping</span>

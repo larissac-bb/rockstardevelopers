@@ -39,10 +39,8 @@ export default function MainPage() {
                     image={product?.image}
                     alt={product?.title}
                     sx={{
-                      //   width: "70%",
-                      //   height: "70%",
-                      height: "230px",
-                      width: "230px",
+                      height: "10em",
+                      width: "10em",
                       objectFit: "scale-down",
                       alignContent: "center",
                       marginLeft: "auto",
