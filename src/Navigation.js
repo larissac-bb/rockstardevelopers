@@ -5,8 +5,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import { Badge } from "@mui/material";
 
-export default function Navigation() {
+export default function Navigation(props) {
+  const { cartContent } = props;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ bgcolor: "#e6e6e6" }}>
@@ -15,13 +17,16 @@ export default function Navigation() {
             <span style={{ color: "black" }}>Shopping</span>
             <span style={{ color: "#fe4702" }}>Experience</span>
           </Typography>
+
           <IconButton
             size="large"
             edge="start"
             style={{ color: "black" }}
             aria-label="cart"
           >
-            <ShoppingCartRoundedIcon />
+            <Badge badgeContent={cartContent?.length} color="warning">
+              <ShoppingCartRoundedIcon />
+            </Badge>
           </IconButton>
         </Toolbar>
       </AppBar>

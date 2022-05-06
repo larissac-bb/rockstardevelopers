@@ -12,7 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function MainPage() {
+export default function MainPage(props) {
+  const { cartContent, setCartContent } = props;
+  console.log(cartContent);
   const [products, setProducts] = useState();
 
   useEffect(() => {
@@ -33,7 +35,10 @@ export default function MainPage() {
           >
             {products?.map((product, index) => (
               <Grid item xs={2} sm={4} md={4} key={index}>
-                <Card sx={{ maxWidth: 345, height: "100%" }}>
+                <Card
+                  sx={{ maxWidth: 345, height: "100%" }}
+                  className="container"
+                >
                   <CardMedia
                     component="img"
                     image={product?.image}
@@ -45,19 +50,31 @@ export default function MainPage() {
                       alignContent: "center",
                       marginLeft: "auto",
                       marginRight: "auto",
+                      display: "block",
                     }}
                   />
+                  <div className="overlay">
+                    <div className="text">
+                      {product?.description?.length > 200
+                        ? product?.description?.substring(0, 200) + `...`
+                        : product?.description}
+                    </div>
+                  </div>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       {product?.title}
                     </Typography>
-                    {/* <Typography variant="body2" color="text.secondary">
-                      {product?.description}
-                    </Typography> */}
                   </CardContent>
+                  <div className="spacer" />
                   <CardActions className="cartButton">
-                    <Button size="small" style={{ color: "#fe4702" }}>
-                      Add to Cart
+                    <Button
+                      size="medium"
+                      style={{ color: "#fe4702", fontWeight: "bold" }}
+                      onClick={() =>
+                        setCartContent((oldArray) => [...oldArray, product])
+                      }
+                    >
+                      <span className="cartButtonText">Add to Cart</span>
                     </Button>
                   </CardActions>
                 </Card>
