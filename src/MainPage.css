@@ -1,3 +1,8 @@
 .content {
-    margin: 1em;
+  margin: 3em 6em 3em 6em;
+  text-align: center;
+}
+
+.cartButton {
+  justify-content: center;
 }
