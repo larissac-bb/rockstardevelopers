@@ -7,7 +7,7 @@ function App() {
   
   return (
     <div className="App">
-      <Navigation cartContent={cartContent} />
+      <Navigation cartContent={cartContent} setCartContent={setCartContent} />
       <MainPage cartContent={cartContent} setCartContent={setCartContent} />
     </div>
   );

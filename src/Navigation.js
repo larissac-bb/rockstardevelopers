@@ -11,7 +11,7 @@ import "./Navigation.css";
 import { useState, useEffect } from "react";
 
 export default function Navigation(props) {
-  const { cartContent } = props;
+  const { cartContent, setCartContent } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [badgeNumber, setBadgeNumber] = useState(0);
@@ -30,10 +30,15 @@ export default function Navigation(props) {
       counter += element.amount;
     });
     setBadgeNumber(counter);
+    if (counter === 0) handleClose();
   }, [cartContent]);
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+
+  const deleteProduct = (product) => {
+    setCartContent(cartContent?.filter((item) => item.id !== product.id));
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -83,7 +88,7 @@ export default function Navigation(props) {
                   className="cartItem"
                   key={cartItem?.id}
                 >
-                  <h4 className="amount">{cartItem?.amount}x</h4>
+                  <span className="amount">{cartItem?.amount}x</span>
                   {cartItem?.title?.length > 30
                     ? cartItem?.title?.substring(0, 30) + `...`
                     : cartItem?.title}
@@ -92,6 +97,7 @@ export default function Navigation(props) {
                     edge="start"
                     style={{ color: "black" }}
                     aria-label="delete"
+                    onClick={() => deleteProduct(cartItem)}
                   >
                     <Delete />
                   </IconButton>
