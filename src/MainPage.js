@@ -23,6 +23,18 @@ export default function MainPage(props) {
       .then((json) => setProducts(json));
   }, []);
 
+  const setCart = (product) => {
+    if (!cartContent?.find((item) => item.id === product.id)) {
+      product.amount = 1;
+      setCartContent((oldArray) => [...oldArray, product]);
+    } else {
+      let cartItems = [...cartContent];
+      const objIndex = cartItems.findIndex((obj) => obj.id === product.id);
+      cartItems[objIndex].amount++;
+      setCartContent(cartItems);
+    }
+  };
+
   return (
     <div className="content">
       {products ? (
@@ -70,9 +82,7 @@ export default function MainPage(props) {
                     <Button
                       size="medium"
                       style={{ color: "#fe4702", fontWeight: "bold" }}
-                      onClick={() =>
-                        setCartContent((oldArray) => [...oldArray, product])
-                      }
+                      onClick={() => setCart(product)}
                     >
                       <span className="cartButtonText">Add to Cart</span>
                     </Button>
