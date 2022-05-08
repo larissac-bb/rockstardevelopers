@@ -14,7 +14,6 @@ import {
 
 export default function MainPage(props) {
   const { cartContent, setCartContent } = props;
-  console.log(cartContent);
   const [products, setProducts] = useState();
 
   useEffect(() => {
