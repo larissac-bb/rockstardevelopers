@@ -77,6 +77,16 @@ export default function MainPage(props) {
                     </Typography>
                   </CardContent>
                   <div className="spacer" />
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      component="div"
+                      sx={{ marginBottom: 0 }}
+                    >
+                      {product?.price}€
+                    </Typography>
+                  </CardContent>
                   <CardActions className="cartButton">
                     <Button
                       size="medium"
